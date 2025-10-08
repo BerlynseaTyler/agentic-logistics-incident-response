@@ -15,12 +15,14 @@ Multi-Agentic workflows using LLMs must be carefully prompt-engineered to ensure
 
 ### Delivery Delay Financial Analyzer
 > This agent's job is to use the Route ID to perform a financial impact calculation for each proposed route when a delivery is delayed, then create an incident record, and finally update the status of Delivery Record to "Calculated".
-#### Key AI Configuration Elements
+> 
+#### Key Agent Configuration Elements
 - The agent **must** be instructed to `store information in memorory`, otherwise information gathered in earlier steps may be lost or misconfigured in later instructions.
 - The agent **must** be instructed to `store the NUMERICAL VALUE OF` fields that are numerical-based for later pass into the Financial Impact Calculation script.
 - The agent had to be specifically instructed to run the Financial Impact Caclulation script **seperately** for each option in the Proposed Routes field.
 - The agent needed to be instructed to return the calculations in a specific format to ensure inclusion of all calculation results and prevent variations in the Calculated Impact output.
 - The agent can be instructed to store the Sys_ID of created records for use in later tools.
+
 #### Prompt Instructions 
 ````
 First, perform Financial Impact Analysis.
@@ -42,11 +44,11 @@ Use the Route ID, Customer Name, Problem Description, and Calculated Impact stor
 
 Update the Delivery Delay record that matches the user provided Route ID with the Calculated Impact and the Incident Sys ID.
 ````
-
+#### Agent Tools 
 Tool Name | Tool Type | Inputs | Outputs 
 ----------|-----------|--------|---------
 Pull Delivery Delay Record | Record Operation | Route_ID | Route ID, Customer ID, Proposed Routes
-Locate's the Supply Agreement | Record Operation | Customer_ID | Customer ID, Delivery Window Hours, Stockout Penalty Rate
+Locate the Supply Agreement | Record Operation | Customer_ID | Customer ID, Delivery Window Hours, Stockout Penalty Rate
 ____
 
 # Architecture Diagram
