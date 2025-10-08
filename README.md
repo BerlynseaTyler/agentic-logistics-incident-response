@@ -4,6 +4,8 @@
 
 ____
 
+
+
 # Implemententation Steps
 
 ## Multi-Agentic Workflow 
@@ -39,8 +41,9 @@ Use the Route ID, Customer Name, Problem Description, and Calculated Impact stor
 
 Update the Delivery Delay record that matches the user provided Route ID with the Calculated Impact and the Incident Sys ID.
 ````
-Tool Name | Tool Type | Inputs | Outputs | Notes
-----------|-----------|--------|---------|-------
+
+Tool Name | Tool Type | Inputs | Outputs 
+----------|-----------|--------|---------
 Pull Delivery Delay Record | Record Operation | Route_ID | Route ID, Customer ID, Proposed Routes
 Locate's the Supply Agreement | Record Operation | Customer_ID | Customer ID, Delivery Window Hours, Stockout Penalty Rate
 ____
