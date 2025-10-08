@@ -10,7 +10,8 @@ ____
 
 ## Multi-Agentic Workflow 
 Multi-Agentic workflows using LLMs must be carefully prompt-engineered to ensure the desired output. Small language or verb changes can be the key to ensuring the agents run as desired with 99.99% accuracy. Multi-agentic workflow instructions must be carefully constructed in the order of execution, preferably given step numbers to ensure strict alignment, to ensure they run properly and accurately each time. If prompt language is ambigious, then agents are given the room to make assumptions in thought or reasoning, therefore allowing it to stray from the intended business objective of it's execution. 
-- **Autonomous agentic workflows built to run without human supervision _must_ be built with each tool in _Autonomous Execution Mode_.**
+
+**Autonomous agentic workflows built to run without human supervision _must_ be built with each tool in _Autonomous Execution Mode_.**
 
 ### Delivery Delay Financial Analyzer
 > This agent's job is to use the Route ID to perform a financial impact calculation for each proposed route when a delivery is delayed, then create an incident record, and finally update the status of Delivery Record to "Calculated".
