@@ -1,0 +1,125 @@
+"WEBHOOK": {
+  "headers": {
+    "host": "btyler.app.n8n.cloud",
+    "user-agent": "ServiceNow/1.0",
+    "content-length": "133",
+    "accept": "application/json",
+    "accept-encoding": "gzip, br",
+    "cdn-loop": "cloudflare; loops=1; subreqs=1",
+    "cf-connecting-ip": "4.223.224.92",
+    "cf-ew-via": "15",
+    "cf-ipcountry": "SE",
+    "cf-ray": "98b2adac1192c63f-ARN",
+    "cf-visitor": "{\"scheme\":\"https\"}",
+    "cf-worker": "n8n.cloud",
+    "content-type": "application/json",
+    "x-forwarded-for": "4.223.224.92, 104.23.223.65",
+    "x-forwarded-host": "btyler.app.n8n.cloud",
+    "x-forwarded-port": "443",
+    "x-forwarded-proto": "https",
+    "x-forwarded-server": "traefik-prod-users-gwc-18-7959cfc789-rqqrl",
+    "x-is-trusted": "yes",
+    "x-real-ip": "4.223.224.92",
+    "x-snc-integration-source": "158d1433c322a650d7299dcd2b013186"
+  },
+  "params": {},
+  "query": {},
+  "body": {
+    "route_id": "665145",
+    "truck_id": "2442",
+    "chosen_option": {
+      "option_id": "opt-3",
+      "route_number": 5,
+      "distance_miles": 139,
+      "eta_minutes": 250
+    }
+  },
+  "webhookUrl": "https://btyler.app.n8n.cloud/webhook/deliverydelay",
+  "executionMode": "production"
+}
+
+"AI Agent": {
+  "output": [
+    {
+      "type": "reasoning_content",
+      "reasoningText": {
+        "text": "The user asked to \"Connect to\" those tools and gave payloads. The assistant executed those calls. Need to respond with something summarizing the results. Provide acknowledgment of each response."
+      }
+    },
+    {
+      "type": "text",
+      "text": "All three requests have been processed successfully.\n\n**Logistics – Execute Route**  \n```json\n{\n  \"ok\": true,\n  \"message\": \"route selected\",\n  \"route_id\": \"665145\",\n  \"truck_id\": \"2442\",\n  \"chosen_option\": {\n    \"option_id\": \"opt-3\",\n    \"route_number\": 5,\n    \"distance_miles\": 139,\n    \"eta_minutes\": 250\n  }\n}\n```\n\n**Retail – Notify Delivery Delay**  \n```json\n{\n  \"ok\": true,\n  \"notification_id\": \"38d3e4cc-2cad-40b7-bbd8-a1ada4a1716f\",\n  \"received_at\": \"2025-10-08T03:51:15.487922Z\",\n  \"route_id\": \"665145\",\n  \"truck_id\": \"2442\",\n  \"chosen_option\": {\n    \"option_id\": \"opt-3\",\n    \"route_number\": 5,\n    \"distance_miles\": 139,\n    \"eta_minutes\": 250\n  }\n}\n```\n\n**ServiceNow – Update Execution Status**  \n```json\n{\n  \"route_id\": \"665145\",\n  \"updates\": [\n    {\n      \"student_id\": \"sn-0014\",\n      \"instance\": \"https://kura-labs-jul-4728-0014.lab.service-now.com\",\n      \"updated\": true,\n      \"status_code\": 200,\n      \"sys_id\": \"edd1d9c8c82432107f448d8884de3470\",\n      \"error\": null\n    }\n  ]\n}\n```\n\nThe route has been executed, the delivery delay notification has been logged, and the execution status in ServiceNow has been updated to **Dispatched**. Let me know if you need any further actions!"
+    }
+  ]
+}
+
+"AWS Bedrock Chat Model": [
+  {
+    "response": {
+      "generations": [
+        [
+          {
+            "text": ""
+          }
+        ]
+      ]
+    },
+    "tokenUsageEstimate": {
+      "completionTokens": 0,
+      "promptTokens": 204,
+      "totalTokens": 204
+    }
+  }
+]
+
+"Logistics MCP Client": [
+  {
+    "response": [
+      {
+        "type": "text",
+        "text": "{\n  \"ok\": true,\n  \"message\": \"route selected\",\n  \"route_id\": \"665145\",\n  \"truck_id\": \"2442\",\n  \"chosen_option\": {\n    \"option_id\": \"opt-3\",\n    \"route_number\": 5,\n    \"distance_miles\": 139,\n    \"eta_minutes\": 250\n  }\n}"
+      }
+    ]
+  }
+]
+
+"Retail MCP Client": [
+  {
+    "response": [
+      {
+        "type": "text",
+        "text": "{\n  \"ok\": true,\n  \"notification_id\": \"38d3e4cc-2cad-40b7-bbd8-a1ada4a1716f\",\n  \"received_at\": \"2025-10-08T03:51:15.487922Z\",\n  \"route_id\": \"665145\",\n  \"truck_id\": \"2442\",\n  \"chosen_option\": {\n    \"option_id\": \"opt-3\",\n    \"route_number\": 5,\n    \"distance_miles\": 139,\n    \"eta_minutes\": 250\n  }\n}"
+      }
+    ]
+  }
+]
+
+"ServiceNow MCP Client": [
+  {
+    "response": [
+      {
+        "type": "text",
+        "text": "{\n  \"route_id\": \"665145\",\n  \"updates\": [\n    {\n      \"student_id\": \"sn-0014\",\n      \"instance\": \"https://kura-labs-jul-4728-0014.lab.service-now.com\",\n      \"updated\": true,\n      \"status_code\": 200,\n      \"sys_id\": \"edd1d9c8c82432107f448d8884de3470\",\n      \"error\": null\n    }\n  ]\n}"
+      }
+    ]
+  }
+]
+
+"AWS Bedrock Chat Model": [
+  {
+    "response": {
+      "generations": [
+        [
+          {
+            "text": ""
+          }
+        ]
+      ]
+    },
+    "tokenUsageEstimate": {
+      "completionTokens": 0,
+      "promptTokens": 694,
+      "totalTokens": 694
+    }
+  }
+]
