@@ -49,7 +49,7 @@ Tool Name | Tool Type | Inputs | Outputs
 ----------|-----------|--------|---------
 Pull Delivery Delay Record | Record Operation | route_id | Route ID, Customer ID, Proposed Routes
 Locate the Supply Agreement | Record Operation | customer_id | Customer ID, Delivery Window Hours, Stockout Penalty Rate
-[Financial Impact Calculation](..blob/main/Supporting_Files/Financial_Impact_Caclulation.js) | Script | eta_minutes, delivery_window_hours, stockout_penalty_rate | Numerical Calculations for Each Proposed Route Option
+[Financial Impact Calculation](..blob/main/SupportingFiles) | Script | eta_minutes, delivery_window_hours, stockout_penalty_rate | Numerical Calculations for Each Proposed Route Option
 ____
 
 # Architecture Diagram
