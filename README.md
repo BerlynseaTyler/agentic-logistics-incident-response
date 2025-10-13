@@ -20,6 +20,8 @@ Multi-Agentic workflows using LLMs must be carefully prompt-engineered to ensure
 - The agent can be instructed to store the Sys_ID of created records for use in later tools.
 
 ### Delivery Delay Financial Analyzer
+> Analyzes the financial impact of delivery disruptions and creates incident tracking.
+> 
 #### Prompt Guidance
 ##### AI Agent Role
 ````
