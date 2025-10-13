@@ -16,8 +16,8 @@ Customer ID | 1
 Assigned To | 
 Status | pending
 Truck ID | 7923
-Problem Description |
-Proposed Routes |
+Problem Description | Breakdown at I-80 MM 143 (engine)
+Proposed Routes | [{"option_id": "opt-1", "route_number": 6, "distance_miles": 122, "eta_minutes": 460}, {"option_id": "opt-2", "route_number": 14, "distance_miles": 109, "eta_minutes": 332}, {"option_id": "opt-3", "route_number": 8, "distance_miles": 152, "eta_minutes": 551}]
 Calculated Impact |
 Chosen Option |
 Incident Sys ID | 
@@ -27,10 +27,10 @@ This table stores all Customer Supply Agreement information for PepsiCo.
 
 Field Name | Example Data
 ------|------
-Customer ID |
-Customer Name |
-Delivery Window Hours |
-Stockout Penalty Rate | 
+Customer ID | 1
+Customer Name | Whole Foods
+Delivery Window Hours | 3
+Stockout Penalty Rate | 250
 
 ## PART 2: Multi-Agentic Workflow 
 Multi-Agentic workflows using LLMs must be carefully prompt-engineered to ensure the desired output. Small language or verb changes can be the key to ensuring the agents run as desired with 99.99% accuracy. Multi-agentic workflow instructions must be carefully constructed in the order of execution, preferably given step numbers to ensure strict alignment, to ensure they run properly and accurately each time. If prompt language is ambigious, then agents are given the room to make assumptions in thought or reasoning, therefore allowing it to stray from the intended business objective of it's execution. Multi-agentic agents also must **not** apply any Output Transformation Strategy to the it's output to prevent data loss or data misconfiguration during data transfer from one tool to the next.
