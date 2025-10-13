@@ -106,7 +106,7 @@ Use the Route ID, Customer Name, Problem Description, and Calculated Impact stor
 Update the Delivery Delay record that matches the user provided Route ID with the Calculated Impact and the Incident Sys ID.
 ````
 #### Agent Tools 
-Tool Name | Tool Type | Inputs | Outputs | Notes
+Tool Name | Tool Type | Inputs (AI) | Output (Field) | Notes
 ----------|-----------|--------|--------- | -----
 Pull Delivery Delay Record | Record Operation (Lookup) | route_id | Route ID <br> Customer ID <br> Proposed Routes
 Locate the Supply Agreement | Record Operation (Lookup) | customer_id | Customer ID <br> Delivery Window Hours <br> Stockout Penalty Rate
@@ -152,7 +152,7 @@ PAUSE FLOW FOR 8 SECONDS.
 8. Use the Incident Resolver with the Incident Sys Id and the Dispatched Status Checker's Chosen Option field.
 ````
 #### Agent Tools 
-Tool Name | Tool Type | Inputs | Outputs | Notes
+Tool Name | Tool Type | Input (AI) | Output (Fields) | Notes
 ----------|-----------|--------|--------- | -----
 Pull Delivery Delay | Record Operation (Lookup) | route_id | Route ID <br> Calculated Impact <br> Incident Sys ID <br> Truck ID <br>Proposed Routes
 Update Delivery Delay | Record Operation (Update) | route_id, decision (calculated by agent and stored in memory as JSON) | | Updates the Chosen Option field with Decision and changes Status to **Approved**. 
