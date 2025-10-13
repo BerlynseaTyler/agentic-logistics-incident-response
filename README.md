@@ -13,7 +13,7 @@ This agentic system leverages **memory-based data persistence**, strict prompt e
 ____
 
 # Implemententation Components 
-## PART 1: Database Tables 
+## PART 1: Application Tables 
 ### Delivery Delay Table
 > This table stores all delivery delay notifications that are sent from PepsiCo's logistics provider, Schneider, to the ServiceNow platform.
 
