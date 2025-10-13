@@ -16,7 +16,7 @@ ____
 # Implemententation Components 
 ## PART 1: Database Tables 
 ### Delivery Delay Table
-This table stores all delivery delay notifications that are sent from PepsiCo's logistics provider, Schneider, to the ServiceNow platform.
+> This table stores all delivery delay notifications that are sent from PepsiCo's logistics provider, Schneider, to the ServiceNow platform.
 
 Field Name | Example Data
 -------------|------
@@ -32,7 +32,7 @@ Chosen Option |
 Incident Sys ID | 
 
 ### Supply Agreement Table
-This table stores all Customer Supply Agreement information for PepsiCo.
+> This table stores all Customer Supply Agreement information for PepsiCo.
 
 Field Name | Example Data
 ------|------
@@ -42,7 +42,7 @@ Delivery Window Hours | 3
 Stockout Penalty Rate | 250
 
 ## PART 2: Multi-Agentic Workflow 
-Multi-Agentic workflows using LLMs must be carefully prompt-engineered to ensure the desired output. Small language or verb changes can be the key to ensuring the agents run as desired with 99.99% accuracy. Multi-agentic workflow instructions must be carefully constructed in the order of execution, preferably given step numbers to ensure strict alignment, to ensure they run properly and accurately each time. If prompt language is ambigious, then agents are given the room to make assumptions in thought or reasoning, therefore allowing it to stray from the intended business objective of it's execution. Multi-agentic agents also must **not** apply any Output Transformation Strategy to the it's output to prevent data loss or data misconfiguration during data transfer from one tool to the next.
+>  Multi-Agentic workflows using LLMs must be carefully prompt-engineered to ensure the desired output. Small language or verb changes can be the key to ensuring the agents run as desired with 99.99% accuracy. Multi-agentic workflow instructions must be carefully constructed in the order of execution, preferably given step numbers to ensure strict alignment, to ensure they run properly and accurately each time. If prompt language is ambigious, then agents are given the room to make assumptions in thought or reasoning, therefore allowing it to stray from the intended business objective of it's execution. Multi-agentic agents also must **not** apply any Output Transformation Strategy to the it's output to prevent data loss or data misconfiguration during data transfer from one tool to the next.
 
 ### Key Agentic Configuration & Prompt Engineering Notes
 - **Autonomous agentic workflows _must_ be built with each tool in _Autonomous Execution Mode_.**
