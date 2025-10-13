@@ -17,7 +17,7 @@ Assigned To |
 Status | pending
 Truck ID | 7923
 Problem Description | Breakdown at I-80 MM 143 (engine)
-Proposed Routes | [{"option_id": "opt-1", "route_number": 6, "distance_miles": 122, "eta_minutes": 460}, {"option_id": "opt-2", "route_number": 14, "distance_miles": 109, "eta_minutes": 332}, {"option_id": "opt-3", "route_number": 8, "distance_miles": 152, "eta_minutes": 551}]
+Proposed Routes | {"option_id": "opt-1", "route_number": 6, "distance_miles": 122, "eta_minutes": 460}, {"option_id": "opt-2", "route_number": 14, "distance_miles": 109, "eta_minutes": 332}, {"option_id": "opt-3", "route_number": 8, "distance_miles": 152, "eta_minutes": 551}
 Calculated Impact |
 Chosen Option |
 Incident Sys ID | 
