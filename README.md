@@ -247,6 +247,8 @@ Several key optimizations ensure that the multi-agentic flow runs reliably and a
 > Following the pause, the workflow runs a **Dispatched Status Checker** to verify whether the route was successfully updated to **Dispatched** in the Delivery Delay record. This real-time confirmation acts as a safety mechanism to prevent premature incident resolution or missed updates.
 3. **Automated Incident Resolution**
 > Once dispatch confirmation is detected, the system triggers the **Incident Resolver**, automatically updating the ServiceNow incident’s state to **Resolved**, inserting structured resolution notes that specify the executed route option. This eliminates manual intervention by support analysts, maintaining SLA compliance and operational transparency.
+4. **Automatic Record Assignment for Trigger Activation**
+> To guarantee consistent execution of the Pending_Delivery_Delay use case, a supporting workflow — Auto-Assign Sys Admin to Delays — was introduced. This flow automatically assigns the System Administrator to any new Delivery Delay records created with a Status = Pending. Doing so ensures that each record meets the “Run As” requirement for agentic trigger activation, preventing missed executions due to unassigned records and maintaining 100% workflow reliability from the moment a delay notification enters ServiceNow.
 
 Together, these optimizations bridge asynchronous webhook calls, data synchronization timing, and human-grade decision accuracy within an end-to-end automated resolution loop.
 ____
