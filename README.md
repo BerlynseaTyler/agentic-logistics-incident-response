@@ -12,7 +12,7 @@ ____
 This table stores all delivery delay notifications that are sent from PepsiCo's logistics provider, Schneider, to the ServiceNow platform.
 
 Field Name | Example Data
-___________|__________
+------|------
 Route ID |
 Customer ID |
 Assigned To |
