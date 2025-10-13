@@ -51,7 +51,8 @@ Stockout Penalty Rate | 250
 - The agent needed to be instructed to return the calculations in a specific format to ensure inclusion of all calculation results and prevent variations in the Calculated Impact output.
 - The agent can be instructed to store the Sys_ID of created records for use in later tools.
 - Record Operation tools in this workflow must be instructed to return only 1 record – the exact match of the input/condition.
-- Record Operation tools cannot both set new information to the field _and_ store the new value, so a seperate tool must be implemented to recieve the newely updated field values (_see Retrieve Webhook Value_). 
+- Record Operation tools cannot both set new information to the field _and_ store the new value, so a seperate tool must be implemented to recieve the newely updated field values (_see Retrieve Webhook Value_).
+- **Token Limit Safeguard**: To accommodate potential token exhaustion in AWS Bedrock during live demonstrations, a conditional instruction was added to the Route Decision Agent prompt. If no records are returned (e.g., due to model cutoff or incomplete execution), the workflow stops gracefully and delivers a friendly closing message. 
 
 ### USE CASE: Analyze Delivery Delays
 > This use case is automatically triggered immediately when vendors relay a Delayed Delivery. This multi-agent workflow runs a cost analysis on alternative routes, makes a determination for which alternative route is best suited for PepsiCo business needs, then communicates the chosen route to external vendors to reroute PepsiCo deliveries without manual intervention.
