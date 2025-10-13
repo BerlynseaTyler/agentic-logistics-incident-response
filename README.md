@@ -45,7 +45,7 @@ Multi-Agentic workflows using LLMs must be carefully prompt-engineered to ensure
 - Record Operation tools in this workflow must be instructed to return only 1 record – the exact match of the input/condition.
 - Record Operation tools cannot both set new information to the field _and_ store the new value, so a seperate tool must be implemented to recieve the newely updated field values (_see Retrieve Webhook Value_). 
 
-### Analyze Delivery Delay (USE CASE) 
+### USE CASE: Analyze Delivery Delays
 > This use case is automatically triggered immediately when vendors relay a Delayed Delivery. This multi-agent workflow runs a cost analysis on alternative routes, makes a determination for which alternative route is best suited for PepsiCo business needs, then communicates the chosen route to external vendors to reroute PepsiCo deliveries without manual intervention.
 
 #### Instructions 
@@ -76,7 +76,7 @@ Pass only numerical values of the inputs of the Financial Impact Tool. Do not pa
 #### Display
 Displays AI agent output in the Now Assist panel to Admins. 
 
-### Delivery Delay Financial Analyzer (AGENT 1) 
+### AGENT 1: Delivery Delay Financial Analyzer
 > Analyzes the financial impact of delivery disruptions and creates incident tracking.
 > 
 #### Prompt Guidance
@@ -115,7 +115,7 @@ Created Delayed Delivery Incident (Create) | Record Operation | route_id <br> cu
 Update the Delivery Record | Record Operation (Update) | route_id <br> calculated_impact <br> incident_sys_id | | Updates the Calculated Impact and Incident Sys ID fields, then changes Status to **Calculated**. 
 
 
-### Route Decision Agent (AGENT 2)
+### AGENT 2: Route Decision Agent
 > Selects optimal routes and coordinate external execution.
 > 
 ### Delivery Delay Financial Analyzer
