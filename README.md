@@ -14,8 +14,7 @@ Multi-Agentic workflows using LLMs must be carefully prompt-engineered to ensure
 **Autonomous agentic workflows built to run without human supervision _must_ be built with each tool in _Autonomous Execution Mode_.**
 
 ### Delivery Delay Financial Analyzer
-> This agent's job is to use the Route ID to perform a financial impact calculation for each proposed route when a delivery is delayed, then create an incident record, and finally update the status of Delivery Record to "Calculated".
-> 
+
 #### Key Agent Configuration Notes
 - The agent **must** be instructed to `store information in memorory`, otherwise information gathered in earlier steps may be lost or misconfigured in later instructions.
 - The agent **must** be instructed to `store the NUMERICAL VALUE OF` fields that are numerical-based for later pass into the Financial Impact Calculation script.
