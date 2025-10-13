@@ -1,8 +1,7 @@
 # agentic-logistics-incident-response
-
-# System Overview
 This multi-agentic ServiceNow workflow automates PepsiCo’s **supply chain incident triage and resolution** for delayed truck deliveries. The system integrates data from PepsiCo’s internal **Supply Agreement** and **Delivery Delay** tables, executes autonomous **AI agent workflows**, and coordinates external system communication via **n8n** webhooks and **MCP client tools** (Logistics, Retail, and ServiceNow endpoints).
 
+# System Overview
 The process begins when a new delayed delivery notification is received from Schneider, PepsiCo’s logistics provider. This event triggers the `Pending_Delivery_Delay` flow, which orchestrates two autonomous AI agents in sequence:
 
 1. Delivery Delay Financial Analyzer
