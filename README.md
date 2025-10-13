@@ -11,11 +11,11 @@ This table stores all delivery delay notifications that are sent from PepsiCo's 
 
 Field Name | Example Data
 ------|------
-Route ID |
-Customer ID |
-Assigned To |
-Status | 
-Truck ID |
+Route ID | 717885
+Customer ID | 1
+Assigned To | 
+Status | pending
+Truck ID | 7923
 Problem Description |
 Proposed Routes |
 Calculated Impact |
