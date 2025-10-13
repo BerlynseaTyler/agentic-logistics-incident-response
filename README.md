@@ -4,10 +4,8 @@
 
 ____
 
-
-
-# Implemententation Steps
-## Database Tables 
+# Implemententation Components 
+## PART 1: Database Tables 
 ### Delivery Delay Table
 This table stores all delivery delay notifications that are sent from PepsiCo's logistics provider, Schneider, to the ServiceNow platform.
 
@@ -34,7 +32,7 @@ Customer Name |
 Delivery Window Hours |
 Stockout Penalty Rate | 
 
-## Multi-Agentic Workflow 
+## PART 2: Multi-Agentic Workflow 
 Multi-Agentic workflows using LLMs must be carefully prompt-engineered to ensure the desired output. Small language or verb changes can be the key to ensuring the agents run as desired with 99.99% accuracy. Multi-agentic workflow instructions must be carefully constructed in the order of execution, preferably given step numbers to ensure strict alignment, to ensure they run properly and accurately each time. If prompt language is ambigious, then agents are given the room to make assumptions in thought or reasoning, therefore allowing it to stray from the intended business objective of it's execution. Multi-agentic agents also must **not** apply any Output Transformation Strategy to the it's output to prevent data loss or data misconfiguration during data transfer from one tool to the next.
 
 ### Key Agentic Configuration & Prompt Engineering Notes
@@ -165,6 +163,67 @@ Pause Flow | Flow Action (Add a Pause) | Wait for 8 seconds. | | Input is placed
 Dispatched Status Checker | Record Operation (Lookup) | route_id | Route ID, Status, Chosen Option | Condition is Status = **Dispatched**.
 Incident Resolver | Record Operation (Update) | incident_sys_id, chosen_option | | Sets State to **Resolved**, Resolution Code to **Solution Provided**, Resolution Notes to **Dispatched Option: {{chosen_option}}**
 
+## PART 3: n8n Communication Agent 
+### Webhook
+- HTTP Method: `POST`
+- Respond: `Immediately`
+
+### AI Agent 
+- Source for Prompt `Define below`
+- Prompt (User Message):
+````
+Connect to Logistics MCP Client Tool: execute_route – the payload is: 
+{
+  "route_id": "{{ $json.body.route_id }}",
+  "truck_id": "{{ $json.body.truck_id }}",
+  "chosen_option": {
+    "option_id": "{{ $json.body.chosen_option.option_id }}",
+    "route_number": {{ $json.body.chosen_option.route_number }},
+    "distance_miles": {{ $json.body.chosen_option.distance_miles }},
+    "eta_minutes": {{ $json.body.chosen_option.eta_minutes }}
+  }
+}
+
+Connect to Retail MCP Client Tool: notify_delivery_delay – the payload is: {
+  "route_id": "{{ $json.body.route_id }}",
+  "truck_id": "{{ $json.body.truck_id }}",
+  "chosen_option": {
+    "option_id": "{{ $json.body.chosen_option.option_id }}",
+    "route_number": {{ $json.body.chosen_option.route_number }},
+    "distance_miles": {{ $json.body.chosen_option.distance_miles }},
+    "eta_minutes": {{ $json.body.chosen_option.eta_minutes }}
+  }
+}
+
+Connect to ServiceNow MCP Client Tool: update_execution_status – the payload is: {
+  "route_id": {{ $json.body.route_id }},
+  "status": Dispatched
+}
+````
+- System Message: `You give JSON payloads to MCP tools.`
+
+#### Chat Model: AWS BEDROCK
+- Model Source: `On-Demand Models`
+- Model: `open.ai.gpt-oss-120b-1:0` - selected for it's advanced ability to handle the output to multiple tools.
+
+#### Logistics MCP Client
+- Endpoint: _Schneider's MCP Server_
+- Server Transport: `HTTP Streamable`
+- Tools to Include: `Selected`
+- Tools to Include: `execute_route`
+
+#### Retail MCP Client
+- Endpoint: _Whole Food's MCP Server_
+- Server Transport: `HTTP Streamable`
+- Tools to Include: `Selected`
+- Tools to Include: `notify_delivery_delay`
+
+#### Retail MCP Client
+- Endpoint: _PepsiCo's ServiceNow MCP Server_
+- Server Transport: `HTTP Streamable`
+- Authentication `Bearer Auth` - _needed to make updates to records in private, internal system._
+- Tools to Include: `Selected`
+- Tools to Include: `update_execution_status`
 ____
 
 # Architecture Diagram
