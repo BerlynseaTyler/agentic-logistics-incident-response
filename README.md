@@ -286,7 +286,7 @@ The next iteration of this multi-agentic workflow can introduce enhanced reliabi
 > - Assigning the incident to a specialized response group.
 > - Sending a notification to logistics leadership.
 > - Generating a ServiceNow task for supply chain recovery analysis.
-#### Self-Healing Webhook Retry Mechanism (Future Stretch Goal)
-> Implement a retry mechanism for transient webhook failures before escalation, allowing the workflow to self-recover without human input.
+#### Self-Healing Agent or Webhook Retry Mechanism (Future Stretch Goal)
+> Implement a retry mechanism for agent or webhook connection failures before escalation, allowing the workflow to self-recover without human input.
 
 
