@@ -75,7 +75,7 @@ Pull Delivery Delay Record | Record Operation (Lookup) | route_id | Route ID, Cu
 Locate the Supply Agreement | Record Operation (Lookup) | customer_id | Customer ID, Delivery Window Hours, Stockout Penalty Rate
 [Financial Impact Calculator](./Supporting%20Files/Financial%20Impact%20Calculation.js) | Script | eta_minutes, delivery_window_hours, stockout_penalty_rate | Numerical Calculations for Each Proposed Route Option | Agent stores this in Memory as "Calculated Impact" to pass to the next tools
 Created Delayed Delivery Incident (Create) | Record Operation | route_id, customer_name, calculated impact | Agent stores created incident's Sys ID in memory | Agent sets the short description using the **Customer Name** and **Route ID**, assigns to **Sales Systems Support**, includes the **Calculated Impact** as the incident's description, and sets Urgency to **1-High** and Impact to **3-Low** _auto-setting Priority to 3-Moderate_ 
-Update the Delivery Record | Record Operation (Update) | route_id, calculated_impact, incident_sys_id | | Updates the Calculated Impact and Incident Sys ID fields, then changes Status to **Caclculated**. 
+Update the Delivery Record | Record Operation (Update) | route_id, calculated_impact, incident_sys_id | | Updates the Calculated Impact and Incident Sys ID fields, then changes Status to **Calculated**. 
 
 
 ### Route Decision Agent 
