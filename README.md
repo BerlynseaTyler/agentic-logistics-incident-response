@@ -10,6 +10,8 @@ The process begins when a new delayed delivery notification is received from Sch
 > Analyzes calculated impacts and delivery constraints to select the most cost-effective route, updates the corresponding ServiceNow records, and coordinates real-time execution through external systems. The agent then confirms dispatch completion before automatically resolving the associated incident.
 
 This agentic system leverages **memory-based data persistence**, strict prompt engineering, and **structured JSON payload desig**n to ensure consistent and lossless execution across multiple AI agents and tools, achieving near-zero human intervention in critical supply chain disruptions.
+
+![](https://github.com/BerlynseaTyler/agentic-logistics-incident-response/blob/main/Supporting%20Files/Photos/Architechture%20Diagram.jpg)
 ____
 
 # Implemententation Components 
@@ -238,11 +240,6 @@ Connect to ServiceNow MCP Client Tool: update_execution_status – the payload i
 - Tools to Include: `update_execution_status`
 ____
 
-# Architecture Diagram
-
-
-____
-
 # Optimization 
 Several key optimizations ensure that the multi-agentic flow runs reliably and aligns with real-world operational timing:
 1. **8-Second Wait Period**
@@ -255,11 +252,6 @@ Several key optimizations ensure that the multi-agentic flow runs reliably and a
 > To guarantee consistent execution of the **Analyze Delivery Delays** use case, a supporting workflow — **Auto-Assign Sys Admin to Delays** — was introduced. This flow automatically assigns the **System Administrator** to any new Delivery Delay records created with a **Status is Pending**. Doing so ensures that each record meets the “Run As” requirement for agentic trigger activation, preventing missed executions due to unassigned records and maintaining 100% workflow reliability from the moment a delay notification enters ServiceNow.
 
 Together, these optimizations bridge asynchronous webhook calls, data synchronization timing, and human-grade decision accuracy within an end-to-end automated resolution loop.
-____
-
-# Testing Results
-
-
 ____
 
 # Business Value
