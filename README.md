@@ -243,11 +243,11 @@ ____
 # Optimization 
 Several key optimizations ensure that the multi-agentic flow runs reliably and aligns with real-world operational timing:
 1. **8-Second Wait Period**
-After the **Route Decision Agent** triggers the external webhook (via n8n), the system waits eight seconds before continuing execution. This ensures that the downstream MCP clients (Logistics and Retail systems) have sufficient time to process the `execute_route` and `notify_delivery_delay` commands before ServiceNow checks for confirmation.
+> After the **Route Decision Agent** triggers the external webhook (via n8n), the system waits eight seconds before continuing execution. This ensures that the downstream MCP clients (Logistics and Retail systems) have sufficient time to process the `execute_route` and `notify_delivery_delay` commands before ServiceNow checks for confirmation.
 2. **Dispatched Status Check**
-Following the pause, the workflow runs a **Dispatched Status Checker** to verify whether the route was successfully updated to **Dispatched** in the Delivery Delay record. This real-time confirmation acts as a safety mechanism to prevent premature incident resolution or missed updates.
+> Following the pause, the workflow runs a **Dispatched Status Checker** to verify whether the route was successfully updated to **Dispatched** in the Delivery Delay record. This real-time confirmation acts as a safety mechanism to prevent premature incident resolution or missed updates.
 3. **Automated Incident Resolution**
-Once dispatch confirmation is detected, the system triggers the **Incident Resolver**, automatically updating the ServiceNow incident’s state to **Resolved**, inserting structured resolution notes that specify the executed route option. This eliminates manual intervention by support analysts, maintaining SLA compliance and operational transparency.
+> Once dispatch confirmation is detected, the system triggers the **Incident Resolver**, automatically updating the ServiceNow incident’s state to **Resolved**, inserting structured resolution notes that specify the executed route option. This eliminates manual intervention by support analysts, maintaining SLA compliance and operational transparency.
 
 Together, these optimizations bridge asynchronous webhook calls, data synchronization timing, and human-grade decision accuracy within an end-to-end automated resolution loop.
 ____
@@ -260,15 +260,15 @@ ____
 # Business Value
 The automated incident workflow significantly enhances PepsiCo’s logistics resilience and operational efficiency:
 
-###### Faster Response Time
+##### Faster Response Time
 Reduces delay-to-resolution time from hours to minutes by autonomously analyzing impacts, selecting routes, and executing dispatches.
-###### Reduced Financial Exposure
+##### Reduced Financial Exposure
 Automatically calculates and mitigates potential stockout penalties by dynamically rerouting based on real-time financial impact data.
-###### Operational Continuity
+##### Operational Continuity
 Maintains uninterrupted product flow to key retail partners such as Whole Foods, avoiding costly SLA breaches and improving customer satisfaction.
-###### Human Effort Reduction
+##### Human Effort Reduction
 Replaces manual triage, financial computation, and routing coordination steps with fully automated workflows—freeing logistics and IT teams for higher-value work.
-###### Auditability and Traceability
+##### Auditability and Traceability
 Each agentic step, calculation, and webhook execution is recorded within ServiceNow, ensuring full visibility for internal auditing and compliance.
 
 ____
@@ -276,16 +276,16 @@ ____
 # Future Optimizations
 The next iteration of this multi-agentic workflow can introduce enhanced reliability and escalation logic by expanding post-webhook validation:
 
-###### Webhook Connection Validation Logic
+##### Webhook Connection Validation Logic
 After the initial 8-second wait, add a **secondary logic branch** to confirm that the n8n webhook successfully connected to all external MCP clients. This branch will validate response metadata for flags indicating transmission failure.
-###### “Not Dispatched” Status Handling
+##### “Not Dispatched” Status Handling
 Introduce a new delivery status — e.g., **Not Dispatched** — to distinguish between a confirmed dispatch and a failed webhook transmission. This status prevents premature incident resolution.
-###### Automated Escalation Path
+##### Automated Escalation Path
 If the Webhook validation branch identifies a failure or detects “Not Dispatched,” automatically **escalate** the incident to a **Supply Chain Manager** for manual review and vendor follow-up. The escalation can include:
 - Assigning the incident to a specialized response group.
 - Sending a notification to logistics leadership.
 - Generating a ServiceNow task for supply chain recovery analysis.
-###### Self-Healing Webhook Retry Mechanism (Future Stretch Goal)
+##### Self-Healing Webhook Retry Mechanism (Future Stretch Goal)
 Implement a retry mechanism for transient webhook failures before escalation, allowing the workflow to self-recover without human input.
 
 
