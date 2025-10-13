@@ -155,13 +155,13 @@ PAUSE FLOW FOR 8 SECONDS.
 Tool Name | Tool Type | Input (AI) | Output (Fields) | Notes
 ----------|-----------|--------|--------- | -----
 Pull Delivery Delay | Record Operation (Lookup) | route_id | Route ID <br> Calculated Impact <br> Incident Sys ID <br> Truck ID <br>Proposed Routes
-Update Delivery Delay | Record Operation (Update) | route_id, decision (calculated by agent and stored in memory as JSON) | | Updates the Chosen Option field with Decision and changes Status to **Approved**. 
-Update Incident Record | Record Operation (Update) | incident_sys_id, urgency (calculated by agent and stored in memory) | | Searches the Incident table by Sys ID – then updates Urgency, sets Impact to **1-High**, and sets Caller to **System Administrator**.
+Update Delivery Delay | Record Operation (Update) | route_id <br> decision (calculated by agent and stored in memory as JSON) | | Updates the Chosen Option field with Decision and changes Status to **Approved**. 
+Update Incident Record | Record Operation (Update) | incident_sys_id <br> urgency (calculated by agent and stored in memory) | | Searches the Incident table by Sys ID – then updates Urgency, sets Impact to **1-High**, and sets Caller to **System Administrator**.
 Retrieve Webhook Value | Record Operation (Lookup) | route_id | Route ID, Chosen Option
 n8n Webhook | Script | route_id | | Conenected to n8n POST API endpoint. 
 Pause Flow | Flow Action (Add a Pause) | Wait for 8 seconds. | | Input is placed in AI Instruction Description.
-Dispatched Status Checker | Record Operation (Lookup) | route_id | Route ID, Status, Chosen Option | Condition is Status = **Dispatched**.
-Incident Resolver | Record Operation (Update) | incident_sys_id, chosen_option | | Sets State to **Resolved**, Resolution Code to **Solution Provided**, Resolution Notes to **Dispatched Option: {{chosen_option}}**
+Dispatched Status Checker | Record Operation (Lookup) | route_id | Route ID <br> Status <br> Chosen Option | Condition is Status = **Dispatched**.
+Incident Resolver | Record Operation (Update) | incident_sys_id <br> chosen_option | | Sets State to **Resolved**, Resolution Code to **Solution Provided**, Resolution Notes to **Dispatched Option: {{chosen_option}}**
 
 ## PART 3: n8n Communication Agent 
 ### Webhook
