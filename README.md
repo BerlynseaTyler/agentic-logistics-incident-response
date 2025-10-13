@@ -47,7 +47,34 @@ Multi-Agentic workflows using LLMs must be carefully prompt-engineered to ensure
 - Record Operation tools in this workflow must be instructed to return only 1 record – the exact match of the input/condition.
 - Record Operation tools cannot both set new information to the field _and_ store the new value, so a seperate tool must be implemented to recieve the newely updated field values (_see Retrieve Webhook Value_). 
 
-### Delivery Delay Financial Analyzer
+### Analyze Delivery Delay (USE CASE) 
+> This use case is automatically triggered immediately when vendors relay a Delayed Delivery. This multi-agent workflow runs a cost analysis on alternative routes, makes a determination for which alternative route is best suited for PepsiCo business needs, then communicates the chosen route to external vendors to reroute PepsiCo deliveries without manual intervention.
+
+#### Instructions 
+````
+When the trigger Pending_Delivery_Delay is activated, retrieve the Route ID from the record. You will run the Delivery Delay Financial Analyzer and then run the Route Decision Agent to select the most optimal alternative route. 
+
+You are triggered by Pending_Delivery_Delay.
+You will retrieve the Route ID from the record. 
+Store this Route ID in memory to run both Agents. 
+Use the tools as exactly as directed. 
+Pass only numerical values of the inputs of the Financial Impact Tool. Do not pass in text. Only pass in numbers. 
+
+1. Use Financial Analyzer to find the calculated impact of delivery delay. 
+2. Use the Route Decision Agent to choose the most optimal route
+````
+#### Connected AI Agents
+1. Delivery Delay Financial Analyzer
+2. Route Decision Agent
+
+#### Trigger
+**Pending_Delivery_Delay**
+- Trigger: `Created or Updated`
+- Table: `Delivery Delay`
+- Conditions: `Status is Pending`
+- Run As: `Assigned To`
+- Objective Template: `When records are created OR updated and Status = Pending on the table, store the record's ROUTE ID to memory and trigger the use case using the ROUTE ID.`
+### Delivery Delay Financial Analyzer (AGENT) 
 > Analyzes the financial impact of delivery disruptions and creates incident tracking.
 > 
 #### Prompt Guidance
@@ -86,7 +113,7 @@ Created Delayed Delivery Incident (Create) | Record Operation | route_id, custom
 Update the Delivery Record | Record Operation (Update) | route_id, calculated_impact, incident_sys_id | | Updates the Calculated Impact and Incident Sys ID fields, then changes Status to **Calculated**. 
 
 
-### Route Decision Agent 
+### Route Decision Agent (AGENT)
 > Selects optimal routes and coordinate external execution.
 > 
 ### Delivery Delay Financial Analyzer
@@ -130,6 +157,9 @@ Update Delivery Delay | Record Operation (Update) | route_id, decision (calculat
 Update Incident Record | Record Operation (Update) | incident_sys_id, urgency (calculated by agent and stored in memory) | | Searches the Incident table by Sys ID – then updates Urgency, sets Impact to **1-High**, and sets Caller to **System Administrator**.
 Retrieve Webhook Value | Record Operation (Lookup) | route_id | Route ID, Chosen Option
 n8n Webhook | Script | route_id | | Conenected to n8n POST API endpoint. 
+Pause Flow | Flow Action (Add a Pause) | Wait for 8 seconds. | | Input is placed in AI Instruction Description.
+Dispatched Status Checker | Record Operation (Lookup) | route_id | Route ID, Status, Chosen Option | Condition is Status = **Dispatched**.
+Incident Resolver | Record Operation (Update) | incident_sys_id, chosen_option | | Sets State to **Resolved**, Resolution Code to **Solution Provided**, Resolution Notes to **Dispatched Option: {{chosen_option}}**
 
 ____
 
