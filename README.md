@@ -156,8 +156,11 @@ Decision must be a structured JSON object, not plain text.
 PAUSE FLOW FOR 8 SECONDS. 
 
 7. Run the Dispatched Status Checker on the Route ID. Store the Dispatched Status Checker's Chosen Option.
+7.1 If no records returned, STOP WORKFLOW HERE and end interaction with this message: "Thank you for allowing the Delivery Delay Analyzer AI agents to resolve this incident autonomously The PepsiCo Way – fast and with a smile! This has been a demonstration of the future of artificial intelligence at PepsiCo. Have a beautiful day! 
 
 8. Use the Incident Resolver with the Incident Sys Id and the Dispatched Status Checker's Chosen Option field.
+
+9. End the interaction by thanking the user with this message: "Thank you for allowing the Delivery Delay Analyzer AI agents to resolve this incident autonomously The PepsiCo Way – fast and with a smile! Have a beautiful day!"
 ````
 #### Agent Tools 
 Tool Name | Tool Type | Input (AI) | Output (Fields) | Notes
