@@ -8,7 +8,7 @@ ____
 
 # Implemententation Steps
 ## Database Tables 
-### Delivery Delay
+### Delivery Delay Table
 This table stores all delivery delay notifications that are sent from PepsiCo's logistics provider, Schneider, to the ServiceNow platform.
 
 Field Name | Example Data
@@ -24,7 +24,7 @@ Calculated Impact |
 Chosen Option |
 Incident Sys ID | 
 
-### Supply Agreement 
+### Supply Agreement Table
 This table stores all Customer Supply Agreement information for PepsiCo.
 
 Field Name | Example Data
@@ -74,7 +74,11 @@ Pass only numerical values of the inputs of the Financial Impact Tool. Do not pa
 - Conditions: `Status is Pending`
 - Run As: `Assigned To`
 - Objective Template: `When records are created OR updated and Status = Pending on the table, store the record's ROUTE ID to memory and trigger the use case using the ROUTE ID.`
-### Delivery Delay Financial Analyzer (AGENT) 
+
+#### Display
+Displays AI agent output in the Now Assist panel to Admins. 
+
+### Delivery Delay Financial Analyzer (AGENT 1) 
 > Analyzes the financial impact of delivery disruptions and creates incident tracking.
 > 
 #### Prompt Guidance
@@ -113,7 +117,7 @@ Created Delayed Delivery Incident (Create) | Record Operation | route_id, custom
 Update the Delivery Record | Record Operation (Update) | route_id, calculated_impact, incident_sys_id | | Updates the Calculated Impact and Incident Sys ID fields, then changes Status to **Calculated**. 
 
 
-### Route Decision Agent (AGENT)
+### Route Decision Agent (AGENT 2)
 > Selects optimal routes and coordinate external execution.
 > 
 ### Delivery Delay Financial Analyzer
