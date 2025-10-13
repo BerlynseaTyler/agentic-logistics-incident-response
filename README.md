@@ -179,6 +179,7 @@ Dispatched Status Checker | Record Operation (Lookup) | route_id | Route ID <br>
 Incident Resolver | Record Operation (Update) | incident_sys_id <br> chosen_option | | Sets State to **Resolved**, Resolution Code to **Solution Provided**, Resolution Notes to **Dispatched Option: {{chosen_option}}**
 
 ## PART 3: n8n Communication Agent 
+![](https://github.com/BerlynseaTyler/agentic-logistics-incident-response/blob/main/Supporting%20Files/Photos/n8n%20Workflow.png)
 ### Webhook
 - HTTP Method: `POST`
 - Respond: `Immediately`
