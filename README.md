@@ -204,7 +204,7 @@ Connect to ServiceNow MCP Client Tool: update_execution_status – the payload i
 
 #### Chat Model: AWS BEDROCK
 - Model Source: `On-Demand Models`
-- Model: `open.ai.gpt-oss-120b-1:0` - selected for it's advanced ability to handle the output to multiple tools.
+- Model: `open.ai.gpt-oss-120b-1:0` - selected for it's advanced ability to handle output to multiple tools.
 
 #### Logistics MCP Client
 - Endpoint: _Schneider's MCP Server_
