@@ -271,7 +271,9 @@ The automated incident workflow significantly enhances PepsiCo’s logistics res
 > Each agentic step, calculation, and webhook execution is recorded within ServiceNow, ensuring full visibility for internal auditing and compliance.
 
 ____
-
+# Final Output 
+![](https://github.com/BerlynseaTyler/agentic-logistics-incident-response/blob/main/Supporting%20Files/Photos/ServiceNow%20Execution.png)
+____
 # Future Optimizations
 The next iteration of this multi-agentic workflow can introduce enhanced reliability and escalation logic by expanding post-webhook validation:
 
