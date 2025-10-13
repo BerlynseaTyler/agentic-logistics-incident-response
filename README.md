@@ -5,9 +5,9 @@ This multi-agentic ServiceNow workflow automates PepsiCo’s **supply chain inci
 
 The process begins when a new delayed delivery notification is received from Schneider, PepsiCo’s logistics provider. This event triggers the `Pending_Delivery_Delay` flow, which orchestrates two autonomous AI agents in sequence:
 
-	1.	Delivery Delay Financial Analyzer
+1. Delivery Delay Financial Analyzer
 > Calculates the contractual financial impact of each proposed reroute option based on delivery windows and stockout penalty rates from customer supply agreements. The agent creates an incident record and updates the delivery delay record with the calculated impact.
-	2.	Route Decision Agent
+2. Route Decision Agent
 > Analyzes calculated impacts and delivery constraints to select the most cost-effective route, updates the corresponding ServiceNow records, and coordinates real-time execution through external systems. The agent then confirms dispatch completion before automatically resolving the associated incident.
 
 This agentic system leverages **memory-based data persistence**, strict prompt engineering, and **structured JSON payload desig**n to ensure consistent and lossless execution across multiple AI agents and tools, achieving near-zero human intervention in critical supply chain disruptions.
