@@ -274,9 +274,6 @@ ____
 # Final Output 
 ![](https://github.com/BerlynseaTyler/agentic-logistics-incident-response/blob/main/Supporting%20Files/Photos/ServiceNow%20Execution.png)
 ____
-# Detailed Architecture Diagram
-![](https://github.com/BerlynseaTyler/agentic-logistics-incident-response/blob/main/Supporting%20Files/Photos/Architechture%20Diagram.jpg)
-____
 # Future Optimizations
 The next iteration of this multi-agentic workflow can introduce enhanced reliability and escalation logic by expanding post-webhook validation:
 
