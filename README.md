@@ -9,7 +9,7 @@ The process begins when a new delayed delivery notification is received from Sch
 2. Route Decision Agent
 > Analyzes calculated impacts and delivery constraints to select the most cost-effective route, updates the corresponding ServiceNow records, and coordinates real-time execution through external systems. The agent then confirms dispatch completion before automatically resolving the associated incident.
 
-![](https://github.com/BerlynseaTyler/agentic-logistics-incident-response/blob/main/Supporting%20Files/Photos/Architechture%20Diagram.jpg)
+
 
 This agentic system leverages **memory-based data persistence**, strict prompt engineering, and **structured JSON payload desig**n to ensure consistent and lossless execution across multiple AI agents and tools, achieving near-zero human intervention in critical supply chain disruptions.
 
@@ -273,6 +273,9 @@ The automated incident workflow significantly enhances PepsiCo’s logistics res
 ____
 # Final Output 
 ![](https://github.com/BerlynseaTyler/agentic-logistics-incident-response/blob/main/Supporting%20Files/Photos/ServiceNow%20Execution.png)
+____
+# Detailed Architecture Diagram
+![](https://github.com/BerlynseaTyler/agentic-logistics-incident-response/blob/main/Supporting%20Files/Photos/Architechture%20Diagram.jpg)
 ____
 # Future Optimizations
 The next iteration of this multi-agentic workflow can introduce enhanced reliability and escalation logic by expanding post-webhook validation:
